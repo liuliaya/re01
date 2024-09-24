@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串操作</title>
+    <script>
+        function stringOperations() {
+            const inputString = "zixciasjwanbajreb524189avfwejoamb";
+            const lengthOfString = inputString.length;
+            const positions = [0, 3, 5, 9];
+            const charsAtPositions = positions.map(i => inputString[i]);
+            const searchChars = ['i', 'c', 'b'];
+            const existence = searchChars.map(char => inputString.includes(char));
+            const replacedString1 = inputString.replace(/g/g, '22');
+            const replacedString2 = replacedString1.replace(/ss/g, 'b');
+            const substring = inputString.substring(1, 6);
+            const charCount = {};
+            for (const char of inputString) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+            const mostFrequentChar = Object.keys(charCount).reduce((a, b) => charCount[a] > charCount[b] ? a : b);
+            const mostFrequentCount = charCount[mostFrequentChar];
+            const modifiedString = Array.from(inputString).map(char => `@${char}@`).join('');
+            document.getElementById('results').innerHTML = `
+                <p>字符串的长度: ${lengthOfString}</p>
+                <p>指定位置的字符: ${charsAtPositions.join(', ')}</p>
+                <p>字符存在情况: ${searchChars.map((char, index) => `${char}: ${existence[index]}`).join(', ')}</p>
+                <p>替换后的字符串: ${replacedString2}</p>
+                <p>截取的字符串: ${substring}</p>
+                <p>出现次数最多的字符: ${mostFrequentChar} (次数: ${mostFrequentCount})</p>
+                <p>修改后的字符串: ${modifiedString}</p>
+            `;
+        }
+    </script>
+</head>
+<body onload="stringOperations()">
+    <h1>如下所示:</h1>
+    <div id="results"></div>
+</body>
+</html>

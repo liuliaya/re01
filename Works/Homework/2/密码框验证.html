@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>密码框验证</title>
+    <style>
+      .textbox {
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .message {
+        margin-top: 10px;
+        color: red; /* 错误信息为红色 */
+      }
+
+      .success {
+        color: green; /* 成功信息为绿色 */
+      }
+
+      .button {
+        margin-top: 10px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="password"
+      class="textbox"
+      id="password"
+      placeholder="请输入密码..."
+    />
+    <button class="button" onclick="validatePassword()">登录</button>
+    <div id="message" class="message"></div>
+
+    <script>
+      function validatePassword() {
+        const password = document.getElementById("password").value;
+        const messageDiv = document.getElementById("message");
+        messageDiv.textContent = ""; // 清空之前的消息
+
+        if (password.length >= 6 && password.length <= 16) {
+          messageDiv.textContent = "输入正确的信息！";
+          messageDiv.className = "message success"; // 设置成功样式
+        } else {
+          messageDiv.textContent = "错误：密码长度必须在6到16个字符之间。";
+          messageDiv.className = "message"; // 设置错误样式
+        }
+      }
+    </script>
+  </body>
+</html>

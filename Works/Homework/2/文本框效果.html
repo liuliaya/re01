@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文本框效果</title>
+    <style>
+      .textbox {
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      class="textbox"
+      id="textbox"
+      value="请输入内容..."
+      onfocus="hidePlaceholder()"
+      onblur="showPlaceholder()"
+    />
+
+    <script>
+      const textbox = document.getElementById("textbox");
+
+      function hidePlaceholder() {
+        if (textbox.value === "请输入内容...") {
+          textbox.value = "";
+        }
+      }
+
+      function showPlaceholder() {
+        if (textbox.value === "") {
+          textbox.value = "请输入内容...";
+        }
+      }
+    </script>
+  </body>
+</html>
